@@ -8,39 +8,40 @@ import openfl.geom.Point;
 
 class Game extends Sprite {
   private var display: BitmapData;
-  private var background: BitmapData;
 
-  private var character: Visual;
+  private var scene: Scene;
 
-  public function new() {
+  private var gameWidth: Int;
+  private var gameHeight: Int;
+
+  public function new(width: Int, height: Int, scene: Scene) {
     super();
 
+    this.gameWidth = width;
+    this.gameHeight = height;
+
+    this.changeScene(scene);
+
     addEventListener(Event.ADDED_TO_STAGE, this.create);
+  }
+
+  public function changeScene(scene: Scene) {
+    this.scene = scene;
   }
 
   private function create(_) {
     removeEventListener(Event.ADDED_TO_STAGE, this.create);
 
-    this.display = new BitmapData(800, 800);
+    this.display = new BitmapData(gameWidth, gameHeight);
+
     var bitmap = new Bitmap(this.display);
     addChild(bitmap);
-
-    this.character = new Visual();
-
-    this.background = new BitmapData(800, 800, false, 0x000000);
 
     addEventListener(Event.ENTER_FRAME, onEnterFrame);
   }
 
   private function onEnterFrame(_) {
-    display.copyPixels(
-      background,
-      background.rect,
-      new Point(0, 0)
-    );
-
-    character.update(0);
-
-    character.draw(display);
+    scene.update(0);
+    scene.draw(display);
   }
 }

@@ -4,7 +4,7 @@ import openfl.display.BitmapData;
 import openfl.geom.Point;
 
 
-class Visual {
+class Visual extends Base {
   public var x(get, set):Float;
   public var y(get, set):Float;
 
@@ -12,17 +12,19 @@ class Visual {
   private var position: Point;
 
   public function new(x: Int=0, y: Int=0) {
+    super();
+
     this.position = new Point(x, y);
 
     this.data = openfl.Assets.getBitmapData("assets/detective.png");
   }
 
-  public function update(dt: Float): Void {
+  override public function update(dt: Float): Void {
     this.x += 1;
     trace("moving");
   }
 
-  public function draw(display: BitmapData): Void {
+  override public function draw(display: BitmapData): Void {
     display.copyPixels(
         this.data,
         this.data.rect,
