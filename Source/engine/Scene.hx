@@ -6,10 +6,10 @@ import openfl.geom.Point;
 class Scene extends Group {
   private var background:BitmapData;
 
-  public function new() {
+  public function new(bgColor:UInt=0x000) {
     super();
 
-    this.background = new BitmapData(800, 800, false, 0x000000);
+    this.background = new BitmapData(800, 800, false, bgColor);
   }
 
   override public function draw(display: BitmapData) {
