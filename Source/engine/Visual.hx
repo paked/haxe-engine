@@ -2,7 +2,7 @@ package engine;
 
 import openfl.display.BitmapData;
 import openfl.geom.Point;
-
+import openfl.Assets;
 
 class Visual extends Base {
   public var x(get, set):Float;
@@ -11,12 +11,12 @@ class Visual extends Base {
   private var data: BitmapData;
   private var position: Point;
 
-  public function new(x: Int=0, y: Int=0) {
+  public function new(x: Int=0, y: Int=0, graphic: BitmapData) {
     super();
 
     this.position = new Point(x, y);
 
-    this.data = openfl.Assets.getBitmapData("assets/detective.png");
+    this.data = graphic;
   }
 
   override public function update(dt: Float): Void {
