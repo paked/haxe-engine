@@ -13,6 +13,7 @@ class Game extends Sprite {
 
   private var gameWidth: Int;
   private var gameHeight: Int;
+  private var time: Float;
 
   public function new(width: Int, height: Int, scene: Scene) {
     super();
@@ -32,6 +33,8 @@ class Game extends Sprite {
   private function create(_) {
     removeEventListener(Event.ADDED_TO_STAGE, this.create);
 
+    this.time = Date.now().getTime();
+
     this.display = new BitmapData(gameWidth, gameHeight);
 
     var bitmap = new Bitmap(this.display);
@@ -41,7 +44,14 @@ class Game extends Sprite {
   }
 
   private function onEnterFrame(_) {
-    scene.update(0);
+    var now = Date.now().getTime();
+
+    // This seems to work!
+    var dt = (now - this.time) / 100;
+
+    scene.update(dt);
     scene.draw(display);
+
+    this.time = now;
   }
 }

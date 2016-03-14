@@ -20,8 +20,7 @@ class Visual extends Base {
   }
 
   override public function update(dt: Float): Void {
-    this.x += 1;
-    trace("moving");
+    this.x += 10 * dt;
   }
 
   override public function draw(display: BitmapData): Void {
