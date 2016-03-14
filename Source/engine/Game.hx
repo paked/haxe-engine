@@ -3,6 +3,7 @@ package engine;
 import openfl.display.Sprite;
 import openfl.display.BitmapData;
 import openfl.display.Bitmap;
+import openfl.events.KeyboardEvent;
 import openfl.events.Event;
 import openfl.geom.Point;
 
@@ -34,6 +35,7 @@ class Game extends Sprite {
     removeEventListener(Event.ADDED_TO_STAGE, this.create);
 
     this.time = Date.now().getTime();
+    Meta.keys = new Keys();
 
     this.display = new BitmapData(gameWidth, gameHeight);
 
