@@ -19,18 +19,6 @@ class Visual extends Base {
     this.data = graphic;
   }
 
-  override public function update(dt: Float): Void {
-    var xDiff = 10 * dt;
-
-    if (Meta.keys.LEFT.isPressed()) {
-      this.x -= xDiff;
-    }
-
-    if (Meta.keys.RIGHT.isPressed()) {
-      this.x += xDiff;
-    }
-  }
-
   override public function draw(display: BitmapData): Void {
     display.copyPixels(
         this.data,
