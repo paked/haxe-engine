@@ -18,8 +18,8 @@
   <classpaths>
     <class path="D:\Development\Haxe\openfl" />
     <class path="d:\Development\Haxe\lime" />
-    <class path="Source" />
-    <class path="Export\html5\haxe" />
+    <class path="source" />
+    <class path="export\html5\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>

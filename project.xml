@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 	
-	<meta title="Detective" package="com.sample.detective" version="1.0.0" company="Company Name" />
-	<app main="Main" path="Export" file="Detective" />
+	<meta title="Detective" package="tech.harrison.detective" version="1.0.0" company="The Anarchy Game Company" />
+	<app main="Main" path="export" file="Detective" />
 	
-	<source path="Source" />
+	<source path="source" />
 	
 	<haxelib name="openfl" />
 	
-	<assets path="Assets" rename="assets" />
-	
+	<assets path="assets" rename="assets" />
 </project>
