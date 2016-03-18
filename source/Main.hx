@@ -7,6 +7,6 @@ class Main extends Sprite {
   public function new() {
     super();
 
-    addChild(new Game(800, 800, new MainScene()));
+    addChild(new Game(640, 480, new MainScene(), 2));
   }
 }

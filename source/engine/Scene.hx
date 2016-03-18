@@ -6,7 +6,7 @@ import openfl.geom.Point;
 class Scene extends Group {
   private var background:BitmapData;
 
-  public function new(bgColor:UInt=0x000) {
+  public function new(bgColor:UInt=0x101) {
     super();
 
     this.background = new BitmapData(800, 800, false, bgColor);

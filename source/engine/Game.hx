@@ -3,26 +3,38 @@ package engine;
 import openfl.display.Sprite;
 import openfl.display.BitmapData;
 import openfl.display.Bitmap;
+import openfl.display.StageScaleMode;
 import openfl.events.KeyboardEvent;
 import openfl.events.Event;
 import openfl.geom.Point;
+import openfl.Lib;
 
 class Game extends Sprite {
-  private var display: BitmapData;
+  private var display: Bitmap;
+  private var canvas: BitmapData;
 
   private var scene: Scene;
 
   private var gameWidth: Int;
   private var gameHeight: Int;
-  private var time: Float;
 
-  public function new(width: Int, height: Int, scene: Scene) {
+  private var time: Float;
+  
+  private var scale(default, set): Float;
+
+  public function new(width: Int, height: Int, scene: Scene, scale: Float = 1) {
     super();
 
     this.gameWidth = width;
     this.gameHeight = height;
 
     this.changeScene(scene);
+
+    this.canvas = new BitmapData(Std.int(gameWidth / scale), Std.int(gameHeight / scale));
+    trace(this.canvas.width, this.canvas.height);
+    this.display = new Bitmap(this.canvas);
+
+    this.scale = scale;
 
     addEventListener(Event.ADDED_TO_STAGE, this.create);
   }
@@ -34,13 +46,12 @@ class Game extends Sprite {
   private function create(_) {
     removeEventListener(Event.ADDED_TO_STAGE, this.create);
 
+    Lib.current.stage.scaleMode = StageScaleMode.EXACT_FIT;
+
     this.time = Date.now().getTime();
     Meta.keys = new Keys();
 
-    this.display = new BitmapData(gameWidth, gameHeight);
-
-    var bitmap = new Bitmap(this.display);
-    addChild(bitmap);
+    addChild(display);
 
     addEventListener(Event.ENTER_FRAME, onEnterFrame);
   }
@@ -52,8 +63,15 @@ class Game extends Sprite {
     var dt = (now - this.time) / 100;
 
     scene.update(dt);
-    scene.draw(display);
+    scene.draw(canvas);
 
     this.time = now;
+  }
+
+  private function set_scale(scale: Float) {
+    display.scaleX = scale;
+    display.scaleY = scale;
+
+    return this.scale = scale;
   }
 }
