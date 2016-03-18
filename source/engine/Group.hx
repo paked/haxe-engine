@@ -11,7 +11,7 @@ class Group extends Base {
     members = new Array<Base>();
   }
 
-  public function add(v: Visual) {
+  public function add(v: Base) {
     members.push(v);
   }
 
