@@ -1,3 +1,3 @@
-# The Blind Detective
+# Haxe Engine
 
-A game about being blind, yet seeing more than everyone else.
+A basic haxe game engine. Do not use it.
